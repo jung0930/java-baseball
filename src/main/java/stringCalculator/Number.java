@@ -1,3 +1,5 @@
+package stringCalculator;
+
 public class Number {
 
     private static final int DEFAULT_NUMBER = 0;
