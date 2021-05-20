@@ -36,9 +36,6 @@ public class StringAddCalculator {
         for (String s : tokens) {
             int num = Integer.parseInt(s);
             checkNumber(num);
-
-
-
             output += num;
         }
 
@@ -50,6 +47,5 @@ public class StringAddCalculator {
             throw new RuntimeException();
         }
     }
-
 
 }
