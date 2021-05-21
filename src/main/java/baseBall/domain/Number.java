@@ -37,7 +37,4 @@ public class Number {
         return true;
     }
 
-
-    // 비어있거나 null인지 체크
-
 }
