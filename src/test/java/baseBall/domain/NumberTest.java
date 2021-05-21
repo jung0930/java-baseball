@@ -15,6 +15,19 @@ class NumberTest {
 
     private Number number;
 
+    @DisplayName("숫자의 범위가 1-9 사이일경우 TRUE RETURN")
+    @ParameterizedTest
+    @ValueSource(ints = { 1, 2, 5 })
+    public void rangeCheck_범위정상처리(int num) {
+        //given
+        number = new Number(num);
+
+        //when
+
+        //then
+        assertThat(number.rangeCheck()).isTrue();
+    }
+
     @DisplayName("숫자의 범위가 1-9 사이가 아닐경우 예외발생")
     @ParameterizedTest
     @ValueSource(ints = { 0, 10, -5 })
@@ -30,17 +43,17 @@ class NumberTest {
                 .hasMessage("1-9 사이의 숫자만 입력 가능합니다.");
     }
 
-    @DisplayName("숫자의 범위가 1-9 사이일경우 TRUE RETURN")
+    @DisplayName("숫자만 입력했을경우 TRUE RETURN")
     @ParameterizedTest
-    @ValueSource(ints = { 1, 2, 5 })
-    public void rangeCheck_범위정상처리(int num) {
+    @ValueSource(ints = { 1, 2, 3 })
+    public void isNumberCheck_숫자인지아닌지확인(int num) {
         //given
         number = new Number(num);
 
         //when
 
         //then
-        assertThat(number.rangeCheck()).isTrue();
+        assertThat(number.isNumberCheck()).isTrue();
     }
 
 }
