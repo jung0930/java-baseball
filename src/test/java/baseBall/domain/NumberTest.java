@@ -18,9 +18,9 @@ class NumberTest {
     @DisplayName("숫자의 범위가 1-9 사이가 아닐경우 예외발생")
     @ParameterizedTest
     @ValueSource(ints = { 0, 10, -5 })
-    public void rangeCheck_범위예외처리(int argument) {
+    public void rangeCheck_범위예외처리(int num) {
         //given
-        number = new Number(argument);
+        number = new Number(num);
 
         //when
 
@@ -28,6 +28,19 @@ class NumberTest {
         assertThatThrownBy(() -> number.rangeCheck())
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("1-9 사이의 숫자만 입력 가능합니다.");
+    }
+
+    @DisplayName("숫자의 범위가 1-9 사이일경우 TRUE RETURN")
+    @ParameterizedTest
+    @ValueSource(ints = { 1, 2, 5 })
+    public void rangeCheck_범위정상처리(int num) {
+        //given
+        number = new Number(num);
+
+        //when
+
+        //then
+        assertThat(number.rangeCheck()).isTrue();
     }
 
 }
