@@ -17,6 +17,10 @@ public class Number {
         this.number = number;
     }
 
+    public int getNumber() {
+        return number;
+    }
+
     // 범위(1-9) 체크
     public boolean rangeCheck() {
         if(number < MIN_NUMBER || number > MAX_NUMBER) {
