@@ -32,7 +32,6 @@ class NumbersTest {
         numbers = new Numbers(numberList);
 
         //then
-        // assertThat(numbers.sizeCheck()).isTrue();
         assertThat(numbers).isInstanceOf(Numbers.class);
     }
 
@@ -66,6 +65,22 @@ class NumbersTest {
 
         //then
         assertThat(numbers).isInstanceOf(Numbers.class);
+    }
+
+    @DisplayName("입력한 숫자 중 중복된 숫자가 있을 경우 예외발생")
+    @Test
+    public void otherCheck_같은수예외처리() {
+        //given
+        numberList.add(new Number(1));
+        numberList.add(new Number(2));
+        numberList.add(new Number(2));
+
+        //when
+
+        //then
+        assertThatThrownBy(() -> new Numbers(numberList))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("모두 다른 숫자를 입력해야합니다.");
     }
 
 }

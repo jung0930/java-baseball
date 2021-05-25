@@ -1,5 +1,6 @@
 package baseBall.domain;
 
+import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -28,6 +29,10 @@ public class Number {
         this.number = number;
     }
 
+    public int getNumber() {
+        return number;
+    }
+
     // 범위(1-9) 체크
     private void rangeCheck(int number) {
         if(number < MIN_NUMBER || number > MAX_NUMBER) {
@@ -51,6 +56,19 @@ public class Number {
         }catch(Exception e) {
             throw new IllegalArgumentException(ISNUMBER_ERROR_MESSAGE);
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Number that = (Number) o;
+        return number == that.number;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(number);
     }
 
 }

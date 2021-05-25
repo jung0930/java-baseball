@@ -1,7 +1,6 @@
 package baseBall.domain;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Numbers {
 
@@ -18,8 +17,8 @@ public class Numbers {
         for(Number number : numberList) {
             numbers.add(number);
         }
-
     }
+
     // 입력한 숫자가 3개인지 확인
     public void sizeCheck(List<Number> numberList) {
         if(numberList.size() != NUMBERS_SIZE) {
@@ -30,39 +29,24 @@ public class Numbers {
     // 입력한 숫자가 모두 다른 값인지 확인
     public void otherCheck(List<Number> numberList) {
 
-        // OTHER_ERROR_MESSAGE
+        Set<Number> numberSet = new HashSet<Number>(numberList);
 
-        for(int i = 0; i < NUMBERS_SIZE; i++) {
-            for(int j = 1; j < NUMBERS_SIZE; j++) {
-
-
-
-            }
+        if(numberList.size() != numberSet.size()) {
+            throw new IllegalArgumentException(OTHER_ERROR_MESSAGE);
         }
+    }
 
-        /*
-        List<Integer> list = new ArrayList<>();
-        int num = numbers.get(0).getNumber();
-        list.add(num);
-        int index = 0;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Numbers that = (Numbers) o;
+        return numbers == that.numbers;
+    }
 
-        for(Number number : numbers) {
-            if(index == 0) {
-                continue;
-            }
-
-            if(num == number.getNumber()) {
-                throw new IllegalArgumentException(SIZE_ERROR_MESSAGE);
-            }
-        }
-
-        */
-
-        /*
-        if(numbers.size() != 3) {
-            throw new IllegalArgumentException(SIZE_ERROR_MESSAGE);
-        }
-        */
+    @Override
+    public int hashCode() {
+        return Objects.hash(numbers);
     }
 
 }
