@@ -5,9 +5,9 @@ import java.util.List;
 
 public class Numbers {
 
-    public static final String SIZE_ERROR_MESSAGE = "3개의 숫자를 입력해야합니다.";
-    public static final String OTHER_ERROR_MESSAGE = "모두 다른 숫자를 입력해야합니다.";
-    public static final int SUCCESS_SIZE = 3;
+    private static final String SIZE_ERROR_MESSAGE = "3개의 숫자를 입력해야합니다.";
+    private static final String OTHER_ERROR_MESSAGE = "모두 다른 숫자를 입력해야합니다.";
+    private static final int SUCCESS_SIZE = 3;
     private final List<Number> numbers = new ArrayList<>();
 
     public void addNumber(Number number) {
