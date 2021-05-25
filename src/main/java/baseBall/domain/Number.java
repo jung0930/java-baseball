@@ -29,12 +29,10 @@ public class Number {
     }
 
     // 범위(1-9) 체크
-    private boolean rangeCheck(int number) {
+    private void rangeCheck(int number) {
         if(number < MIN_NUMBER || number > MAX_NUMBER) {
             throw new IllegalArgumentException(RANGE_ERROR_MESSAGE);
         }
-
-        return true;
     }
 
     // 숫자인지 체크

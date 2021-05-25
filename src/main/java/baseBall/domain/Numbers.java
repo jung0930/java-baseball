@@ -7,29 +7,37 @@ public class Numbers {
 
     private static final String SIZE_ERROR_MESSAGE = "3개의 숫자를 입력해야합니다.";
     private static final String OTHER_ERROR_MESSAGE = "모두 다른 숫자를 입력해야합니다.";
-    private static final int SUCCESS_SIZE = 3;
+    private static final int NUMBERS_SIZE = 3;
     private final List<Number> numbers = new ArrayList<>();
 
-    public void addNumber(Number number) {
-        numbers.add(number);
-    }
+    public Numbers(List<Number> numberList) {
+        // 유효성 체크
+        sizeCheck(numberList);
+        otherCheck(numberList);
 
-    // 입력한 숫자가 3개인지 확인
-    public boolean sizeCheck() {
-        if(numbers.size() != SUCCESS_SIZE) {
-            throw new IllegalArgumentException(SIZE_ERROR_MESSAGE);
+        for(Number number : numberList) {
+            numbers.add(number);
         }
 
-        return true;
+    }
+    // 입력한 숫자가 3개인지 확인
+    public void sizeCheck(List<Number> numberList) {
+        if(numberList.size() != NUMBERS_SIZE) {
+            throw new IllegalArgumentException(SIZE_ERROR_MESSAGE);
+        }
     }
 
     // 입력한 숫자가 모두 다른 값인지 확인
-    public boolean otherCheck() {
+    public void otherCheck(List<Number> numberList) {
 
         // OTHER_ERROR_MESSAGE
 
-        for(int i = 0; i < numbers.size(); i++) {
+        for(int i = 0; i < NUMBERS_SIZE; i++) {
+            for(int j = 1; j < NUMBERS_SIZE; j++) {
 
+
+
+            }
         }
 
         /*
@@ -55,7 +63,6 @@ public class Numbers {
             throw new IllegalArgumentException(SIZE_ERROR_MESSAGE);
         }
         */
-        return true;
     }
 
 }
