@@ -10,25 +10,22 @@ public class Numbers {
     private final List<Number> numbers = new ArrayList<>();
 
     public Numbers(List<Number> numberList) {
-        // 유효성 체크
-        sizeCheck(numberList);
-        otherCheck(numberList);
+        checkSize(numberList);
+        checkOhter(numberList);
 
         for(Number number : numberList) {
             numbers.add(number);
         }
     }
 
-    // 입력한 숫자가 3개인지 확인
-    public void sizeCheck(List<Number> numberList) {
+    public void checkSize(List<Number> numberList) {
         if(numberList.size() != NUMBERS_SIZE) {
             throw new IllegalArgumentException(SIZE_ERROR_MESSAGE);
         }
     }
 
     // 입력한 숫자가 모두 다른 값인지 확인
-    public void otherCheck(List<Number> numberList) {
-
+    public void checkOhter(List<Number> numberList) {
         Set<Number> numberSet = new HashSet<Number>(numberList);
 
         if(numberList.size() != numberSet.size()) {

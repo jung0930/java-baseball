@@ -38,31 +38,4 @@ class NumberTest {
                 .hasMessage("1-9 사이의 숫자만 입력 가능합니다.");
     }
 
-    @DisplayName("숫자만 입력했을경우 인스턴스 정상 생성")
-    @ParameterizedTest
-    @ValueSource(ints = { 1, 2, 3 })
-    public void isNumberCheck_숫자만입력(int num) {
-        //given
-        number = new Number(num);
-
-        //when
-
-        //then
-        assertThat(number).isInstanceOf(Number.class);
-    }
-
-    @DisplayName("문자열을 입력했을경우 예외발생")
-    @ParameterizedTest
-    @ValueSource(strings = { "가", "/", "A" })
-    public void isNumberCheck_문자열입력(String input) {
-        //given
-
-        //when
-
-        //then
-        assertThatThrownBy(() -> new Number(input))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("숫자만 입력 가능합니다.");
-    }
-
 }
