@@ -4,7 +4,7 @@ import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Number {
+public class Ball {
 
     private static final String RANGE_ERROR_MESSAGE = "1-9 사이의 숫자만 입력 가능합니다.";
     private static final String ISNUMBER_ERROR_MESSAGE = "숫자만 입력 가능합니다.";
@@ -14,7 +14,7 @@ public class Number {
 
     private final int number;
 
-    public Number(int number) {
+    public Ball(int number) {
         validateNumber(number);
 
         this.number = number;
@@ -42,7 +42,7 @@ public class Number {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Number that = (Number) o;
+        Ball that = (Ball) o;
         return number == that.number;
     }
 

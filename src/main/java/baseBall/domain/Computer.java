@@ -4,9 +4,14 @@ import java.util.List;
 
 public class Computer {
 
-    private final Numbers numbers;
+    private final Balls balls;
 
-    public Computer(List<Number> numberList) {
-        numbers = new Numbers(numberList);
+    // 정적 팩토리 메서드로 바꿀것.
+    public Computer(List<Ball> ballList) {
+        balls = new Balls(ballList);
+    }
+
+    public Balls getBalls() {
+        return balls;
     }
 }

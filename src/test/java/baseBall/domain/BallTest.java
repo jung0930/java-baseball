@@ -7,21 +7,21 @@ import org.junit.jupiter.params.provider.ValueSource;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-class NumberTest {
+class BallTest {
 
-    private Number number;
+    private Ball ball;
 
     @DisplayName("숫자의 범위가 1-9 사이일경우 인스턴스 정상 생성")
     @ParameterizedTest
     @ValueSource(ints = { 1, 2, 5 })
     public void rangeCheck_범위정상처리(int num) {
         //given
-        number = new Number(num);
+        ball = new Ball(num);
 
         //when
 
         //then
-        assertThat(number).isInstanceOf(Number.class);
+        assertThat(ball).isInstanceOf(Ball.class);
     }
 
     @DisplayName("숫자의 범위가 1-9 사이가 아닐경우 예외발생")
@@ -33,7 +33,7 @@ class NumberTest {
         //when
 
         //then
-        assertThatThrownBy(() -> new Number(num))
+        assertThatThrownBy(() -> new Ball(num))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("1-9 사이의 숫자만 입력 가능합니다.");
     }
