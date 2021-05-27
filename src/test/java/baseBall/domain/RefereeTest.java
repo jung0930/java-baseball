@@ -80,4 +80,32 @@ class RefereeTest {
         assertThat(referee.getScore()).isEqualTo("낫싱");
     }
 
+    @DisplayName("3스트라이크일 경우 게임종료")
+    @Test
+    public void _3스트라이크일_경우_게임종료() {
+        //given
+        inputNumbersList = Arrays.asList(new Ball(1), new Ball(2), new Ball(3));
+
+        //when
+        inputBalls = new Balls(inputNumbersList);
+        referee.countScore(computerBalls, inputBalls);
+
+        //then
+        assertThat(referee.isEndGame()).isTrue();
+    }
+
+    @DisplayName("3스트라이크가 아닐경우 게임계속진행")
+    @Test
+    public void _3스트라이크가_아닐경우_게임계속진행() {
+        //given
+        inputNumbersList = Arrays.asList(new Ball(1), new Ball(2), new Ball(4));
+
+        //when
+        inputBalls = new Balls(inputNumbersList);
+        referee.countScore(computerBalls, inputBalls);
+
+        //then
+        assertThat(referee.isEndGame()).isFalse();
+    }
+
 }

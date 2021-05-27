@@ -6,21 +6,12 @@ import java.util.Map;
 public class Referee {
 
     private static final int NUMBERS_SIZE = 3;
-
-    // 점수도 객체로 관리?? -> 일단 기능구현부터
     private int strikeCount;
     private int ballCount;
-    // private HashMap<Integer, Record> score = new HashMap();
 
     public void countScore(Balls computerBalls, Balls inputBalls) {
-
-        // 스트라이크처리
         countOfStrike(computerBalls, inputBalls);
-
-        // 볼처리
         countOfBall(computerBalls, inputBalls);
-
-        // 낫싱처리
     }
 
     private void countOfStrike(Balls computerBalls, Balls inputBalls) {
@@ -53,6 +44,10 @@ public class Referee {
             return "낫싱";
         }
         return String.format("%d 스트라이크 %d 볼", strikeCount, ballCount);
+    }
+
+    public boolean isEndGame() {
+        return (strikeCount == 3) ? true : false;
     }
 
 }
