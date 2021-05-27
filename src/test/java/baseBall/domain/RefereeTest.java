@@ -3,7 +3,6 @@ package baseBall.domain;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import stringCalculator.StringAddCalculator;
 
 import java.util.Arrays;
 import java.util.List;
@@ -16,35 +15,69 @@ class RefereeTest {
     private Balls inputBalls;
     private List<Ball> computerNumbersList;
     private List<Ball> inputNumbersList;
-    private Referee referr;
+    private Referee referee;
 
     @BeforeEach
     void setup() {
-        referr = new Referee();
+        referee = new Referee();
+        computerNumbersList = Arrays.asList(new Ball(1), new Ball(2), new Ball(3));
+        computerBalls = new Balls(computerNumbersList);
     }
 
-    @DisplayName("스트라이크의 갯수를 반환한다.")
+    @DisplayName("콘솔메시지_3스트라이크")
     @Test
-    public void 스트라이크의_갯수를_반환() {
+    public void _콘솔메시지_3스트라이크() {
         //given
-        computerNumbersList = Arrays.asList(new Ball(1), new Ball(2), new Ball(3));
-        inputNumbersList = Arrays.asList(new Ball(9), new Ball(2), new Ball(3));
+        inputNumbersList = Arrays.asList(new Ball(1), new Ball(2), new Ball(3));
 
         //when
-        computerBalls = new Balls(computerNumbersList);
         inputBalls = new Balls(inputNumbersList);
-        referr.scoreBall(computerBalls, inputBalls);
-        referr.getScore();
+        referee.countScore(computerBalls, inputBalls);
 
         //then
-        //assertThat(numbers).isInstanceOf(Numbers.class);
+        assertThat(referee.getScore()).isEqualTo("3 스트라이크 0 볼");
     }
 
+    @DisplayName("콘솔메시지_1스트라이크")
+    @Test
+    public void _콘솔메시지_1스트라이크() {
+        //given
+        inputNumbersList = Arrays.asList(new Ball(5), new Ball(6), new Ball(3));
 
+        //when
+        inputBalls = new Balls(inputNumbersList);
+        referee.countScore(computerBalls, inputBalls);
 
+        //then
+        assertThat(referee.getScore()).isEqualTo("1 스트라이크 0 볼");
+    }
 
+    @DisplayName("콘솔메시지_3볼")
+    @Test
+    public void _콘솔메시지_3볼() {
+        //given
+        inputNumbersList = Arrays.asList(new Ball(2), new Ball(3), new Ball(1));
 
+        //when
+        inputBalls = new Balls(inputNumbersList);
+        referee.countScore(computerBalls, inputBalls);
 
+        //then
+        assertThat(referee.getScore()).isEqualTo("0 스트라이크 3 볼");
+    }
 
+    @DisplayName("콘솔메시지_낫싱")
+    @Test
+    public void 콘솔메시지_낫싱() {
+        //given
+        inputNumbersList = Arrays.asList(new Ball(4), new Ball(5), new Ball(6));
+
+        //when
+        inputBalls = new Balls(inputNumbersList);
+        referee.countScore(computerBalls, inputBalls);
+
+        //then
+        assertThat(referee.getScore()).isEqualTo("낫싱");
+    }
 
 }

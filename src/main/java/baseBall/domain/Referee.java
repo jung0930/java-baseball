@@ -1,48 +1,58 @@
 package baseBall.domain;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Referee {
 
     private static final int NUMBERS_SIZE = 3;
-    private int strikeCount = 0;
-    private int ballCount = 0;
 
-    public void scoreBall(Balls computerBalls, Balls inputBalls) {
+    // 점수도 객체로 관리?? -> 일단 기능구현부터
+    private int strikeCount;
+    private int ballCount;
+    // private HashMap<Integer, Record> score = new HashMap();
+
+    public void countScore(Balls computerBalls, Balls inputBalls) {
 
         // 스트라이크처리
-        scoreStrike(computerBalls, inputBalls);
+        countOfStrike(computerBalls, inputBalls);
 
         // 볼처리
-        scoreBall();
+        countOfBall(computerBalls, inputBalls);
 
         // 낫싱처리
-
     }
 
-    private void scoreStrike(Balls computerBalls, Balls inputBalls) {
+    private void countOfStrike(Balls computerBalls, Balls inputBalls) {
         for(int i = 0; i < NUMBERS_SIZE; i++) {
-            compareStrikeBall(computerBalls.get(i), inputBalls.get(i));
+            compareStrike(computerBalls.get(i), inputBalls.get(i));
         }
-
     }
 
-    private void compareStrikeBall(Ball computerBall, Ball inputBall) {
+    private void compareStrike(Ball computerBall, Ball inputBall) {
         if(computerBall.equals(inputBall)) {
             strikeCount++;
         }
     }
 
-    private void scoreBall() {
-
+    private void countOfBall(Balls computerBalls, Balls inputBalls) {
+        for(int i = 0; i < NUMBERS_SIZE; i++) {
+            for(int j = 0; j < NUMBERS_SIZE; j++) {
+                if(i == j) {
+                    continue;
+                }
+                if(computerBalls.get(i).equals(inputBalls.get(j))) {
+                    ballCount++;
+                }
+            }
+        }
     }
 
-    public void getScore() {
-        String message = String.format("%d 스트라이크 %d 볼", strikeCount, ballCount);
-
-        System.out.println(message);
-
-        // 점수반환시 객체로?? Score??
-
-        // return (strikeCount == 0 && ballCount == 0) ? "낫싱" : String.format("%d 스트라이크 %d 볼", strikeCount, ballCount);
+    public String getScore() {
+        if(strikeCount == 0 && ballCount == 0) {
+            return "낫싱";
+        }
+        return String.format("%d 스트라이크 %d 볼", strikeCount, ballCount);
     }
 
 }
