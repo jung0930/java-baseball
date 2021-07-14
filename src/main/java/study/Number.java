@@ -1,4 +1,4 @@
-package stringCalculator;
+package study;
 
 public class Number {
 
