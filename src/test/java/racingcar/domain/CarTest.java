@@ -47,45 +47,4 @@ public class CarTest {
                 .hasMessage("1-5 자리의 이름만 입력 가능합니다.");
     }
 
-    /*
-    @DisplayName("입력된 숫자가 4 이상일 경우 자동차를 앞으로 한칸 이동")
-    @Test
-    public void 입력된_숫자가_4_이상일_경우_자동차를_앞으로_한칸_이동() {
-        //given
-        car = new Car("ABC");
-
-        //when
-        car = car.moveCar(5);
-
-        //then
-        assertThat(car.getPosition()).isEqualTo(1);
-    }
-
-    @DisplayName("입력된 숫자가 3 이하일 경우 자동차를 이동시키지 않음")
-    @Test
-    public void 자동차를_앞으로_한칸_이동() {
-        //given
-        car = new Car("ABC");
-
-        //when
-        car = car.moveCar(5);
-
-        //then
-        assertThat(car.getPosition()).isEqualTo(1);
-    }
-
-    @DisplayName("입력된 숫자가 1에서_9가 아닐때 오류메시지 발생")
-    @ParameterizedTest
-    @ValueSource(ints = { 0, 10})
-    public void 입력된_숫자가_1에서_9가_아닐때_오류메시지_발생(int num) {
-        //given
-        car = new Car("ABC");
-
-        //when && then
-        assertThatThrownBy(() -> car.moveCar(num))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("1-9 숫자만 들어올수있습니다.");
-    }
-    */
-
 }
